@@ -60,9 +60,9 @@ def build_response(statusCode, body=None):
 def prepare_response(result):
     try:
         logger.info("Started preparing response")
-        column_names = ["policyNumber", "billingOrgNumber", "status"]
+        column_names = ["policyNumber", "billingOrgNumber", "status", "productType"]
         json_ready = [
-        {key: value for key, value in zip(column_names, row[:3])}
+        {key: value for key, value in zip(column_names, row[:4])}
         for row in result
     ]
         logger.info(f"Successfully prepared response: {json_ready[0]}")
@@ -90,7 +90,7 @@ def lambda_handler(event, context):
         # json_array = [r[0] for r in result]
         logger.info(f"First Index of array is {json_array[0]}")
         
-        fileName='policies'+ str(currentDateTime) +  '.json'
+        fileName='latest_policies'+ str(currentDateTime) +  '.json'
         logger.info(f"File Name is ',{fileName}")
         key='TEMP/'+fileName
         uploadByteStream=bytes(json.dumps(json_array).encode('UTF-8'))

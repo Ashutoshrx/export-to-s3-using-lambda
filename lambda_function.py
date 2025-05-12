@@ -14,10 +14,10 @@ def connect_to_DB(event):
         logger.info("Started Connecting to PostgreSQL")
 
         conn = psycopg2.connect(
-            host="proxy-1746712528059-policy-p3.proxy-clzfvi53z3dr.us-east-1.rds.amazonaws.com",
-            database="policy_poc_2",
-            user="postgres",
-            password="postgres",
+            host="<your host name>",
+            database="<your DB name>",
+            user="<your DB user>",
+            password="<your DB password>",
             port=5432
         )
 
